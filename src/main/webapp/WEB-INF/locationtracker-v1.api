@@ -24,7 +24,7 @@
     "maxAge" : 0
   },
   "methods" : {
-    "locationtracker.locationTrackerApi.getLocation" : {
+    "locationtracker.getLocation" : {
       "path" : "location",
       "httpMethod" : "get",
       "authLevel" : "NONE",

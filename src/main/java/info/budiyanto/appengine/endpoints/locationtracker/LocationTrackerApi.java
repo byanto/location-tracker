@@ -14,7 +14,7 @@ import com.google.api.server.spi.config.ApiMethod;
 )
 public class LocationTrackerApi {
 	
-	@ApiMethod(httpMethod="get")
+	@ApiMethod(name="getLocation", httpMethod="get")
 	public Location getLocation(HttpServletRequest req){
 		String ipAddress = req.getRemoteAddr();
 		String country = req.getHeader("X-AppEngine-Country");
@@ -24,12 +24,7 @@ public class LocationTrackerApi {
 		String[] latlong = req.getHeader("X-AppEngine-CityLatlong").split(",");
 		String latitude = latlong[0];
 		String longtitude = latlong[1];
-		System.out.println("IP Address: " + ipAddress);
-		System.out.println("Country: " + country);
-		System.out.println("Region: " + region);
-		System.out.println("City: " + city);
-		System.out.println("Latitude: " + latitude);
-		System.out.println("Longtitude: " + longtitude);
+		
 		return new Location(ipAddress, country, region, city, latitude, longtitude);
 	}
 	

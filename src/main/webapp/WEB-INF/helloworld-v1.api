@@ -24,27 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "helloworld.greetings.getGreeting" : {
-      "path" : "hellogreeting/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com" ],
-      "clientIds" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID", "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "info.budiyanto.appengine.endpoints.locationtracker.Greetings.getGreeting",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int32",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "helloworld.greetings.multiply" : {
       "path" : "hellogreeting/{times}",
       "httpMethod" : "post",
@@ -62,6 +41,27 @@
         },
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "helloworld.greetings.getGreeting" : {
+      "path" : "hellogreeting/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com" ],
+      "clientIds" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "info.budiyanto.appengine.endpoints.locationtracker.Greetings.getGreeting",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -123,15 +123,15 @@
       }
     },
     "methods" : {
-      "info.budiyanto.appengine.endpoints.locationtracker.Greetings.getGreeting" : {
-        "response" : {
-          "$ref" : "HelloGreeting"
-        }
-      },
       "info.budiyanto.appengine.endpoints.locationtracker.Greetings.insertGreeting" : {
         "request" : {
           "$ref" : "HelloGreeting"
         },
+        "response" : {
+          "$ref" : "HelloGreeting"
+        }
+      },
+      "info.budiyanto.appengine.endpoints.locationtracker.Greetings.getGreeting" : {
         "response" : {
           "$ref" : "HelloGreeting"
         }

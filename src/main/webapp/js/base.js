@@ -34,143 +34,90 @@ google.devrel.samples.hello.SCOPES =
     'https://www.googleapis.com/auth/userinfo.email';
 
 /**
- * Whether or not the user is signed in.
- * @type {boolean}
+ * Prints IP address to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.signedIn = false;
-
-/**
- * Loads the application UI after the user has completed auth.
- */
-google.devrel.samples.hello.userAuthed = function() {
-  var request = gapi.client.oauth2.userinfo.get().execute(function(resp) {
-    if (!resp.code) {
-      google.devrel.samples.hello.signedIn = true;
-      document.getElementById('signinButton').innerHTML = 'Sign out';
-      document.getElementById('authedGreeting').disabled = false;
-    }
-  });
+google.devrel.samples.hello.printIP = function(location) {
+  //var element = document.createElement('div');
+  //element.classList.add('row');
+  //element.innerHTML = greeting.message;
+  //document.getElementById('outputLog').appendChild(element);
+  document.getElementById('outputIP').innerHTML = location.ipAddress;
 };
 
 /**
- * Handles the auth flow, with the given value for immediate mode.
- * @param {boolean} mode Whether or not to use immediate mode.
- * @param {Function} callback Callback to call on completion.
+ * Prints client browser to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.signin = function(mode, callback) {
-  gapi.auth.authorize({client_id: google.devrel.samples.hello.CLIENT_ID,
-      scope: google.devrel.samples.hello.SCOPES, immediate: mode},
-      callback);
+google.devrel.samples.hello.printClient = function(location) {
+  document.getElementById('outputClient').innerHTML = "Client - TODO";
 };
 
 /**
- * Presents the user with the authorization popup.
+ * Prints city to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.auth = function() {
-  if (!google.devrel.samples.hello.signedIn) {
-    google.devrel.samples.hello.signin(false,
-        google.devrel.samples.hello.userAuthed);
-  } else {
-    google.devrel.samples.hello.signedIn = false;
-    document.getElementById('signinButton').innerHTML = 'Sign in';
-    document.getElementById('authedGreeting').disabled = true;
-  }
+google.devrel.samples.hello.printCity = function(location) {
+  document.getElementById('outputCity').innerHTML = location.city;
 };
 
 /**
- * Prints a greeting to the greeting log.
- * param {Object} greeting Greeting to print.
+ * Prints region to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.print = function(greeting) {
-  var element = document.createElement('div');
-  element.classList.add('row');
-  element.innerHTML = greeting.message;
-  document.getElementById('outputLog').appendChild(element);
+google.devrel.samples.hello.printRegion = function(location) {
+  document.getElementById('outputRegion').innerHTML = location.region;
 };
 
 /**
- * Gets a numbered greeting via the API.
- * @param {string} id ID of the greeting.
+ * Prints country to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.getGreeting = function(id) {
-  gapi.client.helloworld.greetings.getGreeting({'id': id}).execute(
-      function(resp) {
-        if (!resp.code) {
-          google.devrel.samples.hello.print(resp);
-        } else {
-          window.alert(resp.message);
-        }
-      });
+google.devrel.samples.hello.printCountry = function(location) {
+  document.getElementById('outputCountry').innerHTML = location.country;
 };
 
 /**
- * Lists greetings via the API.
+ * Prints ISP to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.listGreeting = function() {
-  gapi.client.helloworld.greetings.listGreeting().execute(
-      function(resp) {
-        if (!resp.code) {
-          resp.items = resp.items || [];
-          for (var i = 0; i < resp.items.length; i++) {
-            google.devrel.samples.hello.print(resp.items[i]);
-          }
-        }
-      });
+google.devrel.samples.hello.printISP = function(location) {
+  document.getElementById('outputISP').innerHTML = "ISP - TODO";
 };
 
 /**
- * Gets a greeting a specified number of times.
- * @param {string} greeting Greeting to repeat.
- * @param {string} count Number of times to repeat it.
+ * Prints latitude to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.multiplyGreeting = function(
-    greeting, times) {
-  gapi.client.helloworld.greetings.multiply({
-      'message': greeting,
-      'times': times
-    }).execute(function(resp) {
-      if (!resp.code) {
-        google.devrel.samples.hello.print(resp);
-      }
-    });
+google.devrel.samples.hello.printLatitude = function(location) {
+  document.getElementById('outputLatitude').innerHTML = location.latitude;
 };
 
 /**
- * Greets the current user via the API.
+ * Prints longtitude to the appropriate output position.
+ * param {Object} location Location of the client to print.
  */
-google.devrel.samples.hello.authedGreeting = function(id) {
-  gapi.client.helloworld.greetings.authed().execute(
-      function(resp) {
-        google.devrel.samples.hello.print(resp);
-      });
+google.devrel.samples.hello.printLongtitude = function(location) {
+  document.getElementById('outputLongtitude').innerHTML = location.longtitude;
 };
 
 /**
  * Enables the button callbacks in the UI.
  */
-google.devrel.samples.hello.enableButtons = function() {
-  document.getElementById('getGreeting').onclick = function() {
-    google.devrel.samples.hello.getGreeting(
-        document.getElementById('id').value);
-  }
-
-  document.getElementById('listGreeting').onclick = function() {
-    google.devrel.samples.hello.listGreeting();
-  }
-
-  document.getElementById('multiplyGreetings').onclick = function() {
-    google.devrel.samples.hello.multiplyGreeting(
-        document.getElementById('greeting').value,
-        document.getElementById('count').value);
-  }
-
-  document.getElementById('authedGreeting').onclick = function() {
-    google.devrel.samples.hello.authedGreeting();
-  }
-  
-  document.getElementById('signinButton').onclick = function() {
-    google.devrel.samples.hello.auth();
-  }
+google.devrel.samples.hello.processRequest = function() {
+  gapi.client.locationtracker.getLocation().execute(
+      function(resp) {
+        if (!resp.code) {
+          google.devrel.samples.hello.printIP(resp);
+          google.devrel.samples.hello.printClient(resp);
+          google.devrel.samples.hello.printCity(resp);
+          google.devrel.samples.hello.printRegion(resp);
+          google.devrel.samples.hello.printCountry(resp);
+          google.devrel.samples.hello.printISP(resp);
+          google.devrel.samples.hello.printLatitude(resp);
+          google.devrel.samples.hello.printLongtitude(resp);
+        } 
+      });
 };
 
 /**
@@ -183,13 +130,11 @@ google.devrel.samples.hello.init = function(apiRoot) {
   var apisToLoad;
   var callback = function() {
     if (--apisToLoad == 0) {
-      google.devrel.samples.hello.enableButtons();
-      google.devrel.samples.hello.signin(true,
-          google.devrel.samples.hello.userAuthed);
+      google.devrel.samples.hello.processRequest();
     }
   }
 
-  apisToLoad = 2; // must match number of calls to gapi.client.load()
-  gapi.client.load('helloworld', 'v1', callback, apiRoot);
-  gapi.client.load('oauth2', 'v2', callback);
+  apisToLoad = 1; // must match number of calls to gapi.client.load()
+  gapi.client.load('locationtracker', 'v1', callback, apiRoot);
+  //gapi.client.load('oauth2', 'v2', callback);
 };

@@ -1,0 +1,51 @@
+body {
+    font-family: 'Lato', sans-serif;
+    color: #747704;
+    font-weight: 300;
+}
+
+.text-muted{
+    color: #BCBBBB;
+}
+
+.text-thin{
+    font-weight: 100;
+}
+
+.title-super{
+    font-size: 50px;
+}
+
+.title-logo{
+    margin-top: 10px;
+    margin-left: 15px;
+    width: 50px;
+    height: auto;
+}
+
+.line-top{
+    margin-top: 5px;
+}
+
+.line-bottom{
+    
+}
+
+.contact-row{
+    padding-bottom: 15px;
+}
+
+.contact-icon{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #5C5E2B;
+}
+
+a:hover span.contact-icon.fa {
+    color: coral;
+}
+
+hr{
+    border-width: 2px;
+    border-top-color: #BCBBBB;
+}
