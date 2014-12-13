@@ -1,0 +1,78 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://by-locationtracker.appspot.com/_ah/api",
+  "name" : "locationtracker",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://by-locationtracker.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "locationtracker.locationTrackerApi.getLocation" : {
+      "path" : "location",
+      "httpMethod" : "get",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com" ],
+      "clientIds" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID", "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "info.budiyanto.appengine.endpoints.locationtracker.LocationTrackerApi.getLocation",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Location" : {
+        "id" : "Location",
+        "type" : "object",
+        "properties" : {
+          "ipAddress" : {
+            "type" : "string"
+          },
+          "country" : {
+            "type" : "string"
+          },
+          "region" : {
+            "type" : "string"
+          },
+          "city" : {
+            "type" : "string"
+          },
+          "latitude" : {
+            "type" : "string"
+          },
+          "longtitude" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "info.budiyanto.appengine.endpoints.locationtracker.LocationTrackerApi.getLocation" : {
+        "response" : {
+          "$ref" : "Location"
+        }
+      }
+    }
+  }
+}
