@@ -20,20 +20,6 @@ google.devrel.samples = google.devrel.samples || {};
 google.devrel.samples.hello = google.devrel.samples.hello || {};
 
 /**
- * Client ID of the application (from the APIs Console).
- * @type {string}
- */
-google.devrel.samples.hello.CLIENT_ID =
-    '280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com';
-
-/**
- * Scopes used by the application.
- * @type {string}
- */
-google.devrel.samples.hello.SCOPES =
-    'https://www.googleapis.com/auth/userinfo.email';
-
-/**
  * Prints IP address to the appropriate output position.
  * param {Object} location Location of the client to print.
  */
@@ -136,5 +122,4 @@ google.devrel.samples.hello.init = function(apiRoot) {
 
   apisToLoad = 1; // must match number of calls to gapi.client.load()
   gapi.client.load('locationtracker', 'v1', callback, apiRoot);
-  //gapi.client.load('oauth2', 'v2', callback);
 };

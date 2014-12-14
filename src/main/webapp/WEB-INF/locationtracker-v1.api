@@ -29,8 +29,8 @@
       "httpMethod" : "get",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com" ],
-      "clientIds" : [ "280801875406-r9il7roirrv5k25him376m7igtcfqg2j.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID", "292824132082.apps.googleusercontent.com" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "info.budiyanto.appengine.endpoints.locationtracker.LocationTrackerApi.getLocation",
       "request" : {
         "body" : "empty"
