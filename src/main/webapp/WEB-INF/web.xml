@@ -4,13 +4,22 @@
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>info.budiyanto.appengine.endpoints.locationtracker.Greetings,info.budiyanto.appengine.endpoints.locationtracker.LocationTrackerApi</param-value>
+            <param-value>info.budiyanto.appengine.endpoints.locationtracker.LocationTrackerApi</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>SystemServiceServlet</servlet-name>
         <url-pattern>/_ah/spi/*</url-pattern>
     </servlet-mapping>
+    <security-constraint>
+    	<web-resource-collection>
+            <web-resource-name>everything</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
